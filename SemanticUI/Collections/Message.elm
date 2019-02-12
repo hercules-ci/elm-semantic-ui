@@ -95,10 +95,7 @@ view extraAttributes cfg contents =
               Nothing ->
                   []
               Just msg ->
-                  [ i [ class "close icon"
-                      , onClick msg
-                      ]
-                      []
+                  [ Icon.icon (Icon.init |> Icon.attributes [onClick msg]) Icon.Close
                   ]
         headerContent =
             case cfg.header of
@@ -125,9 +122,9 @@ view extraAttributes cfg contents =
             , extraAttributes
             ]
         )
-        (case cfg.icon of
+        (closeContent ++ case cfg.icon of
             Nothing ->
-                closeContent ++ allContent
+                allContent
 
             Just a ->
                 closeContent ++
